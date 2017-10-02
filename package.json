@@ -1,0 +1,23 @@
+{
+  "name": "lexhelper",
+  "version": "1.0.0",
+  "description": "Helper library for making AWS Lambda development for AWS Lex easier.",
+  "main": "lex.js",
+  "scripts": {
+    "test": "mocha **/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hkrist/LexHelper.git"
+  },
+  "keywords": [
+    "awslex",
+    "awslambda"
+  ],
+  "author": "Kristof Havasi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hkrist/LexHelper/issues"
+  },
+  "homepage": "https://github.com/hkrist/LexHelper#readme"
+}
