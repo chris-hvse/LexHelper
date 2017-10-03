@@ -23,7 +23,7 @@ class LexEvent {
                 invocationSource: Joi.string().alphanum().required(),
                 userId: Joi.string().required(),
                 messageVersion: Joi.string(),
-                sessionAttributes: Joi.object(),
+                sessionAttributes: Joi.object().allow(null),
                 bot: Joi.object(),
                 currentIntent: Joi.object(),
                 inputTranscript: Joi.string(),
