@@ -36,7 +36,7 @@ test_default = function(event) {
     return new Promise((resolve, reject) => {
         let lex = new Lex();
         lex.contextualize(testEvent).then((lex_event) => {
-            lex_event.executeMatchingAction(lex_event, event).then(() => {
+            lex_event.executeMatchingAction(event).then(() => {
                 lex_event.respond(() => {}).then((response) => {
                     console.log('Successfully processed event');
                     resolve(response);

@@ -12,11 +12,7 @@ class Fulfillment extends LexEvent {
                 sessionAttributes : {},
                 dialogAction : {
                     type : "Close",
-                    fulfillmentState : "Fulfilled",
-                    message : {
-                        contentType : "PlainText",
-                        content : "Thanks!"
-                    }
+                    fulfillmentState : "Fulfilled"
                 }
             }
 

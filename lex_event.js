@@ -47,19 +47,13 @@ class LexEvent {
         this.response = response;
     }
 
-    executeMatchingAction(lex_event, event) {
-        return new Promise((resolve, reject) => {
-            for(let action of this.actions) {
-                if (action['matcher'](event)) {
-                    return action['executor'](this, event).then(() => {                    
-                        return resolve();
-                    }).catch((err) => {
-                        return reject(err);
-                    })
-                }
+    executeMatchingAction(event) {
+        for(let action of this.actions) {
+            if (action['matcher'](event)) {
+                return Promise.resolve(action['executor'](this, event));
             }
-            return reject(new MissingActionError('No matching action was found.'));
-        });
+        }
+        return Promise.reject(new MissingActionError('No matching action was found.'));
     }
 
     respond(response_callback) {
