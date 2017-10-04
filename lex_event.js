@@ -13,7 +13,6 @@ class LexEvent {
          *  }]
         */
         this.actions = [];
-        this.response = null;
     }
 
     validate(event) {
@@ -43,10 +42,6 @@ class LexEvent {
         this.actions.unshift(action);
     }
 
-    addResponse(response) {
-        this.response = response;
-    }
-
     executeMatchingAction(event) {
         for(let action of this.actions) {
             if (action['matcher'](event)) {
@@ -54,17 +49,6 @@ class LexEvent {
             }
         }
         return Promise.reject(new MissingActionError('No matching action was found.'));
-    }
-
-    respond(response_callback) {
-        return new Promise((resolve, reject) => {
-            if (this.response) {
-                response_callback(null, this.response);
-                return resolve(this.response);
-            } else {
-                return reject(new MissingResponseError());
-            }
-        });
     }
 }
 

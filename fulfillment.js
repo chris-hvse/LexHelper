@@ -16,7 +16,6 @@ class Fulfillment extends LexEvent {
                 }
             }
 
-            lex_event.addResponse(response);
             return resolve(response);
         });
     };

@@ -36,11 +36,10 @@ test_default = function(event) {
     return new Promise((resolve, reject) => {
         let lex = new Lex();
         lex.contextualize(testEvent).then((lex_event) => {
-            lex_event.executeMatchingAction(event).then(() => {
-                lex_event.respond(() => {}).then((response) => {
-                    console.log('Successfully processed event');
-                    resolve(response);
-                });
+            lex_event.executeMatchingAction(event).then((response) => {
+                console.log('response: ' + response);
+                callback(null, response);
+                resolve();
             });
         }).catch((err) => {
             reject(err);
