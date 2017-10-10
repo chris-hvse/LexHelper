@@ -38,14 +38,13 @@ test_default = function(event) {
         lex.contextualize(testEvent).then((lex_event) => {
             lex_event.executeMatchingAction(event).then((response) => {
                 console.log('response: ' + response);
-                callback(null, response);
-                resolve();
+                resolve(response);
             });
         }).catch((err) => {
             reject(err);
         });
     });
-}
+};
 
 it("should delegate in the response", () => {
     testEvent = Object.assign({
