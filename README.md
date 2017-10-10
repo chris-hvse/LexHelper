@@ -14,31 +14,30 @@ lex.contextualize(event).then((lex_event) => {
 Then you can add actions to the LexEvent object in the format:
 ```
 lex_event.addAction({
-    matcher: event_matcher,
-    executor: event_executor
+    matcher: action_matcher,
+    executor: action_executor
 });
 ```
-Where the event_matcher and event_executor functions have the header:
+You can add multiple actions with different matchers to select the right action for the incoming Lex Event. The action_matcher and action_executor functions have the header:
 ```
 /**
  * Function to match with event
- * @param {Object} event 
+ * @param {Object} event - the event object where we check our conditions for our action
  * @return {Boolean} isMatching
  */
- function event_matcher(event) {}
+ function action_matcher(event) {}
 
 /**
  * Function to execute action and create response
- * @param {LexEvent} lex_event,
- * @param {Event} event
+ * @param {Object} lex_event - the contextualized lex event object (dialog or fulfillment)
+ * @param {Object} event - the event object passed by lex
  * @return {Promise} response
  */
- function sum(lex_event, event) {}
+ function action_executor(lex_event, event) {}
 ```
-You can add multiple actions with different matchers to select the right action for the incoming Lex Event, the "executeMatchingAction" function will only execute the first matching, prioritizing from the last added action.
+This will execute the first matching, prioritizing from last added to first.
 ```
 lex_event.executeMatchingAction(event).then((response) => {
-    callback(null, response)
+    
 });
 ```
-This will execute the action and call the callback with the response, provided by Lex in the third parameter of the Lambda function.
