@@ -1,12 +1,12 @@
 const LexEvent = require(__dirname + '/lex_event');
 
 class Fulfillment extends LexEvent {
-    _defaultMatcher(event) {
+    _defaultMatcher() {
         return true;
     }
 
-    _defaultExecutor(lex_event, event) {
-        return new Promise((resolve, reject) => {
+    _defaultExecutor() {
+        return new Promise((resolve) => {
             // Do nothing
             let response = {
                 sessionAttributes : {},
@@ -14,7 +14,7 @@ class Fulfillment extends LexEvent {
                     type : "Close",
                     fulfillmentState : "Fulfilled"
                 }
-            }
+            };
 
             return resolve(response);
         });

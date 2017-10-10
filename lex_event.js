@@ -1,6 +1,5 @@
 const Joi = require('joi');
 const ValidationError = require(__dirname + '/errors').ValidationError;
-const MissingResponseError = require(__dirname + '/errors').MissingResponseError;
 const MissingActionError = require(__dirname + '/errors').MissingActionError;
 
 class LexEvent {
@@ -9,7 +8,7 @@ class LexEvent {
          *  list of actions, in the schema of:
          *  [{
          *      matcher: function(event) => boolean,
-         *      executor: function(event) => Promise
+         *      executor: function(lex_event, event) => Promise
          *  }]
         */
         this.actions = [];
@@ -29,7 +28,7 @@ class LexEvent {
                 outputDialogMode: Joi.string()
             });
 
-            Joi.validate(event, schema, (err, value) => {
+            Joi.validate(event, schema, (err) => {
                 if (err) {
                     return reject(new ValidationError(err.message));
                 }

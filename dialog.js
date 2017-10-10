@@ -2,12 +2,12 @@ const LexEvent = require(__dirname + '/lex_event');
 const _  = require('lodash');
 
 class Dialog extends LexEvent {
-    _defaultMatcher(event) {
+    _defaultMatcher() {
         return true;
     }
 
     _defaultExecutor(lex_event, event) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             // Do nothing
             let response = {
                 sessionAttributes : {},
@@ -44,7 +44,7 @@ class Dialog extends LexEvent {
                         title: ' ',
                         buttons: buttons
                     };
-                })
+                });
     
                 let response = {
                     sessionAttributes : {},
