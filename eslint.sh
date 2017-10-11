@@ -5,7 +5,7 @@ echo "Linted Files"
 echo "============"
 
 # Loop through controllers.
-for filename in ./*.js; do
+for filename in ./lib/*.js; do
     echo "$filename"
 
     eslint $filename

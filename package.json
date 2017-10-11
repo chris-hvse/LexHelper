@@ -2,7 +2,7 @@
   "name": "lexhelper",
   "version": "1.0.0",
   "description": "Helper library for making AWS Lambda development for AWS Lex easier.",
-  "main": "lex.js",
+  "main": "./lib/lex.js",
   "scripts": {
     "test": "mocha **/*.test.js"
   },
